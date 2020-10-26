@@ -52,9 +52,10 @@ if __name__ == '__main__':
     title2 = comp_num + ' 多라운드 (%d/%d순위)' % (datetime.now().month, datetime.now().day)
 
     try:
-        driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[3]/div[1]/div/div/a[3]').click()
-        sleep(1)
-        crawling(info)
+        if driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[3]/div[1]/div/div/a[3]'):  # 다음페이지
+            driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[3]/div[1]/div/div/a[3]').click()
+            sleep(1)
+            crawling(info)
     except:
         pass
 
