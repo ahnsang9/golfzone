@@ -1,9 +1,7 @@
 from selenium import webdriver
 from time import sleep
 from datetime import datetime
-import pandas as pd
 import openpyxl
-import re
 
 if __name__ == '__main__':
     def click(xpath):
