@@ -78,10 +78,14 @@ if __name__ == '__main__':
             temp.cell(row=j+4, column=i+1).value = info[i][j]
 
     ################################################################# 多라운드 순위
-    df = pd.DataFrame({'rank': info2[2][:5]})
-    df['rank_min'] = df['rank'].rank(method='min', ascending=False)
+    temp1 = info2[2][:5]
+    rank = [1]
+    for i in range(1, 5):
+        rank.append(i+1)
+        if int(temp1[i]) == int(temp1[i-1]):
+            rank[i] = i
     for i in range(min(len(info2[1]), 5)):
-        temp.cell(row=i+29,column=1).value = str(int(df['rank_min'][i]))+'위'
+        temp.cell(row=i+29, column=1).value = str(rank[i])+'위'
         temp.cell(row=i+29, column=2).value = info2[1][i]
         temp.cell(row=i+29, column=7).value = info2[2][i]
 
