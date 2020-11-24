@@ -49,8 +49,8 @@ if __name__ == '__main__':
     title = comp_num + ' (%d/%d순위)' % (datetime.now().month, datetime.now().day)
     title2 = comp_num + ' 多라운드 (%d/%d순위)' % (datetime.now().month, datetime.now().day)
     try:
-        if driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[3]/div[1]/div/div/a[3]'):  # 다음페이지
-            driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[3]/div[2]/div[3]/div[1]/div/div/a[3]').click()
+        if driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[4]/div[2]/div[3]/div[1]/div/div/a[3]'):  # 다음페이지
+            driver.find_element_by_xpath('/html/body/div[2]/div[3]/div/div/div[4]/div[2]/div[3]/div[1]/div/div/a[3]').click()
             sleep(1)
             info = crawling(info)
     except:
@@ -73,13 +73,13 @@ if __name__ == '__main__':
             temp.cell(row=j+4, column=i+1).value = info[i][j]
 
     ################################################################# 多라운드 순위
-    temp1 = info2[2][:5]
+    temp1 = info2[2]
     rank = [1] * len(info2[0])
-    for i in range(len(info2[0])):
+    for i in range(min(5, len(info2[0]))):
         rank[i] = i+1
         if i < len(info2[0])-1 and int(temp1[i]) == int(temp1[i+1]):
             rank[i+1] = rank[i]
-    for i in range(len(info2[0])):
+    for i in range(min(5, len(info2[0]))):
         temp.cell(row=i+29, column=1).value = str(rank[i])+'위'
         temp.cell(row=i+29, column=2).value = info2[1][i]
         temp.cell(row=i+29, column=7).value = info2[2][i]
